@@ -1,7 +1,5 @@
 package Wayne.Industries.ClienteAPI;
 
-import org.hibernate.engine.internal.Cascade;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,55 +7,55 @@ import java.util.List;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id ;
-    private String nome ;
-    private String endereçoCliente ;
-    private String profissaoCliente ;
-    @OneToMany (cascade = CascadeType.ALL)
-    private List<Andress> endereço ;
-
-    public Cliente(String nome, String endereçoCliente, String profissaoCliente, List<Andress> endereço) {
-        this.nome = nome;
-        this.endereçoCliente = endereçoCliente;
-        this.profissaoCliente = profissaoCliente;
-
-        this.endereço = endereço;
-    }
+    private Long id;
+    private String nomeCompleto;
+    private String profissao;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Endereco> enderecos;
 
     public Cliente() {
     }
 
-
-    public List<Andress> getEndereço() {
-        return endereço;
+    public Cliente(Long id, String nomeCompleto, String profissao, List<Endereco> enderecos) {
+        this.id = id;
+        this.nomeCompleto = nomeCompleto;
+        this.profissao = profissao;
+        this.enderecos = enderecos;
     }
 
-    public void setEndereço(List<Andress> endereço) {
-        this.endereço = endereço;
+    public Long getId() {
+        return id;
     }
 
-    public String getNome() {
-        return nome;
+
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
-    public String getEndereçoCliente() {
-        return endereçoCliente;
+    public String getProfissao() {
+        return profissao;
     }
 
-    public void setEndereçoCliente(String endereçoCliente) {
-        this.endereçoCliente = endereçoCliente;
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
     }
 
-    public String getProfissaoCliente() {
-        return profissaoCliente;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setProfissaoCliente(String profissaoCliente) {
-        this.profissaoCliente = profissaoCliente;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 }
+
+
+
+
+
 

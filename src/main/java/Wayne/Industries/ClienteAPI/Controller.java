@@ -1,8 +1,8 @@
 package Wayne.Industries.ClienteAPI;
 
+import Wayne.Industries.ClienteAPI.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +13,7 @@ public class Controller {
     Repository repository;
 
     @PostMapping
-    public Cliente create (@RequestBody Cliente cliente){
+    public Cliente create(@RequestBody Cliente cliente){
         Cliente clienteSaved = repository.save(cliente);
         return clienteSaved;
     }
@@ -23,7 +23,6 @@ public class Controller {
     }
 
     @GetMapping (value = "/{id}")
-    @ResponseBody
     public Cliente findById (@PathVariable Long id) {
         Cliente clienteReturn = repository.findById(id).get();
         return clienteReturn;
